@@ -12,7 +12,7 @@
       font-family: cursive;
       -webkit-text-stroke-width: 2px;
       -webkit-text-fill-color: white;
-      text-shadow: 5px 3px 0 yellow;
+      text-shadow: 10px 5px 0 black;
 }
 
 .go {
@@ -21,7 +21,7 @@
       font-family: cursive;
       -webkit-text-stroke-width: 2px;
       -webkit-text-fill-color: white;
-      text-shadow: 5px 3px 0 yellow;
+      text-shadow: 10px 5px 0 black;
 }
 
 .click a{
@@ -30,5 +30,5 @@
       font-family: cursive;
       -webkit-text-stroke-width: 2px;
       -webkit-text-fill-color: white;
-      text-shadow: 5px 3px 0 red;
+      text-shadow: 5px 3px 0 black;
 }
