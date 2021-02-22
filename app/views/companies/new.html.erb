@@ -1,0 +1,83 @@
+<%= form_with model: @company, local: true do |f| %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      会社登録
+    </h1>
+  </div>
+  <div class="img-upload">
+      <div class="weight-bold-text">
+        会社の写真
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">会社名</label>
+      <span class="indispensable">必須</span>
+    </div>
+  <div class='input-name-wrap'>
+      <%= f.text_area :name, class:"input-name", id:"name", placeholder:"会社名を入力" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">業種</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :occupaion, class:"input-name", id:"occupaion", placeholder:"業種を入力" %>
+    </div>
+  </div>
+  <div class="form-group">
+     <div class='form-text-wrap'>
+       <label class="form-text">電話番号</label>
+       <span class="indispensable">必須</span>
+     </div>
+     <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"会社の番号を入力",maxlength:"11"%>
+  </div>
+  <div class='shipping-address-form'>
+      <h1 class='info-input-haedline'>
+        住所
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :address, class:"input-default", id:"address", placeholder:"例）5-4"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">建物情報</label>
+          <span class="indispensable">任意</span>
+        </div>
+        <%= f.text_field :building, class:"input-default", id:"building", placeholder:"例）◯◯ビル5階"%>
+      </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+</div>
+<% end %>
