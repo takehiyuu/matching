@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
      belongs_to :user
+     has_one :recruitment
      has_one_attached :image
 
      validates :prefecture_id, numericality: { other_than: 1 } 
