@@ -1,4 +1,7 @@
 <div class="main" >ようこそ<%= current_user.name %>さん</div>
 
 <%= link_to "マイページを作って仕事を探す", new_profile_path %>
-<%= link_to "会社を登録して求人を募集する", new_company_path %>
+<%= link_to "会社を登録する", new_company_path %>
+<% @companies.each do |company| %>
+<%= link_to company.name, company_path(company)%>
+<% end %>
