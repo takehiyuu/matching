@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :matches
   resources :mains
   resources :profiles
-  resources :companies
+  resources :companies do
+    resources :recruitments
+  end
 end
