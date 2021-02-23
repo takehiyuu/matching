@@ -1,4 +1,9 @@
 class CompaniesController < ApplicationController
+
+     def index
+          @companies = Company.all
+     end
+
      def new
           @company = Company.new
      end
@@ -6,7 +11,7 @@ class CompaniesController < ApplicationController
      def create
           company = Company.create(company_params)
           if company.save
-               redirect_to root_path
+               redirect_to companies_path
           else
                render 'new'
           end

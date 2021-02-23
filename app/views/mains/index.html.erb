@@ -1,7 +1,3 @@
-<div class="main" >ようこそ<%= current_user.name %>さん</div>
-
-<%= link_to "マイページを作って仕事を探す", new_profile_path %>
-<%= link_to "会社を登録する", new_company_path %>
-<% @companies.each do |company| %>
-<%= link_to company.name, company_path(company)%>
-<% end %>
+<%= render "shared/header" %>
+<%= link_to "仕事を探す", squares_path %>
+<%= link_to "求人を募集する", companies_path %>

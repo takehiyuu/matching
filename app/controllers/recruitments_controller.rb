@@ -1,4 +1,10 @@
 class RecruitmentsController < ApplicationController
+
+     def index
+          @recruitments = Recruitment.all
+          @company = Company.find(params[:company_id])
+     end
+
      def new
           @company = Company.find(params[:company_id])
           @recruitment = Recruitment.new
@@ -8,10 +14,13 @@ class RecruitmentsController < ApplicationController
           @company = Company.find(params[:company_id])
           recruitment = Recruitment.create(recruitment_params)
           if recruitment.save
-               redirect_to root_path
+               redirect_to company_recruitments_path(@company.id)
           else
                render 'new'
           end
+     end
+
+     def show
      end
 
      private
