@@ -1,0 +1,12 @@
+<%= "#{current_user.name}さんのMy企業ページ" %>
+
+<h2>会社情報</h2>
+<div>
+  <% if @user.blank? %>
+        <%= link_to "会社を登録する", new_company_path%>
+     <% else %>
+        <h2>現在登録している会社</h2>
+        <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company) %>
+        <%= link_to "#{@company.name}の求人を募集する", company_recruitment_path(@company)%>
+     <% end %>
+</div>
