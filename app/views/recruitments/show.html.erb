@@ -1,0 +1,11 @@
+<%= "#{@company.name}の求人情報ページ" %>
+<div>
+  <% if @company_recruitment.blank? %>
+     <h2>現在掲載している求人情報はありません</h2>
+        <%= link_to "求人情報を作成する", new_company_recruitment_path(@company)%>
+     <% else %>
+        <h2>現在掲載している求人情報</h2>
+        <%= link_to "#{@recruitment.category}の情報を編集する", edit_company_recruitment_path(@recruitment) %>
+        <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@recruitment)%>
+     <% end %>
+</div>
