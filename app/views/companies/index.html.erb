@@ -8,7 +8,7 @@
     <h2>現在登録している会社</h2>
       <% @companies.each do |company| %>
       <% if company.user_id == current_user.id%>
-        <%= link_to "#{company.name}の情報を編集する", company_path(company.id) %>
+        <%= link_to "#{company.name}の情報を編集する", edit_company_path(company.id) %>
         <%= link_to "#{company.name}の求人を募集する", company_recruitments_path(company.id)%>
       <% end %>
       <% end %>
