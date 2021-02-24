@@ -11,14 +11,17 @@ class CompaniesController < ApplicationController
      def create
           company = Company.create(company_params)
           if company.save
-               redirect_to companies_path
+               redirect_to company_path(current_user)
           else
                render 'new'
           end
      end
 
      def show
-          @company = Company.find(params[:id])
+          @user = Company.where(user_id: current_user.id)
+          if @user.present?
+               @company = current_user.company
+          end
      end
 
      def edit
@@ -29,9 +32,9 @@ class CompaniesController < ApplicationController
           company = Company.find(params[:id])
           company.update(company_params)
           if company.save
-               redirect_to companies_path
+               redirect_to company_path(company)
           else
-               render edit_company_path(company.id)
+               render edit_company_path(company)
           end
      end
 
