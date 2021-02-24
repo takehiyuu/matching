@@ -1,0 +1,11 @@
+<%= "#{current_user.name}さんのマイページ" %>
+<div>
+  <div>
+    <h2>マイページ情報</h2>
+     <% if @user.blank? %>
+        <%= link_to "マイページを作成する", new_profile_path%>
+     <% else %>
+        <%= link_to "マイページの情報を編集する", edit_profile_path(@profile) %>
+     <% end %>
+  </div>
+</div>
