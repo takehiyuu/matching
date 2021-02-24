@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+     # before_action :move_profile, only: [:show]
      def new
           @profile = Profile.new
      end
@@ -6,9 +7,30 @@ class ProfilesController < ApplicationController
      def create
           profile = Profile.create(profile_params)
           if profile.save
-               redirect_to mains_path
+               redirect_to profile_path(current_user)
           else
                render "new"
+          end
+     end
+
+     def show
+          @user = Profile.where(user_id: current_user.id)
+          if @user.present?
+               @profile = current_user.profile
+          end
+     end
+
+     def edit
+          @profile = Profile.find(params[:id])
+     end
+
+     def update
+          profile = Profile.find(params[:id])
+          profile.update(profile_params)
+          if profile.save
+               redirect_to profile_path(profile)
+          else
+               render edit_profile_path(profile)
           end
      end
 
