@@ -1,6 +1,6 @@
 <h1>仕事情報一覧ページ</h1>
 <% @recruitments.each do |recruitment| %>
 <div>
-  <%= link_to "#{recruitment.category}のバイト募集中" %>
+  <%= link_to "#{recruitment.category}のバイト募集中", square_path(recruitment) %>
 </div>
 <% end %>
