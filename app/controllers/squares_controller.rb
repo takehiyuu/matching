@@ -5,5 +5,6 @@ class SquaresController < ApplicationController
 
      def show
           @recruitment = Recruitment.find(params[:id])
+          @company = Company.find(params[:id])
      end
 end
