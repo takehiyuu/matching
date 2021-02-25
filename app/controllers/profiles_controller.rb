@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-     # before_action :move_profile, only: [:show]
      def new
           @profile = Profile.new
      end
