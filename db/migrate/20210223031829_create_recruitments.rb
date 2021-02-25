@@ -2,6 +2,7 @@ class CreateRecruitments < ActiveRecord::Migration[6.0]
   def change
     create_table :recruitments do |t|
       t.string :category, null: false
+      t.string :price, null: false
       t.string :work, null: false
       t.string :work_day, null: false
       t.string :work_time, null: false
