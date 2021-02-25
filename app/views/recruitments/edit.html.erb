@@ -1,0 +1,89 @@
+<%= form_with model: [@company, @recruitment], local: true do |f| %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      募集内容の編集
+    </h1>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">職種</label>
+      <span class="indispensable">必須</span>
+    </div>
+  <div class='input-name-wrap'>
+      <%= f.text_area :category, class:"input-name", id:"category", placeholder:"例) 飲食業" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">勤務内容</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :work, class:"input-name", id:"work", placeholder:"例) ホールスタッフ" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">勤務日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :work_day, class:"input-name", id:"work_day", placeholder:"例) 何月 何日" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">勤務時間</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :work_time, class:"input-name", id:"work_time", placeholder:"例) 何時~何時まで" %>
+    </div>
+  </div>
+  <div class='shipping-address-form'>
+      <h1 class='info-input-haedline'>
+        勤務地情報
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :address, class:"input-default", id:"address", placeholder:"例）5-4"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">建物情報</label>
+          <span class="indispensable">任意</span>
+        </div>
+        <%= f.text_field :building, class:"input-default", id:"building", placeholder:"例）◯◯ビル5階"%>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">会社PR</label>
+          <span class="indispensable">任意</span>
+        </div>
+        <%= f.text_field :pr, class:"input-default", id:"pr", placeholder:"例) 簡単な説明や紹介など"%>
+      </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+</div>
+<% end %>
