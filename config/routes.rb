@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :mains
   resources :profiles
   resources :squares
+  resources :huntings
   resources :companies do
-    resources :recruitments
+    resources :recruitments do
+      resources :huntings
+    end
   end
 end

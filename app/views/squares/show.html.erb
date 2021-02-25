@@ -1,2 +1,16 @@
-<h1><%= "#{@recruitment.category}のページ"%></h1>
-<%= link_to "この求人に応募する", "#"%>
+<h1><%= "#{@recruitment.category}のアルバイト募集"%></h1>
+<h2><%= @recruitment.pr%></h2>
+<h4>勤務内容</h4>
+<div><%= @recruitment.work %></div>
+<div>給与</div>
+<div><%= @recruitment.price%></div>
+<div>勤務日</div>
+<div><%= @recruitment.work_day%></div>
+<div>勤務時間</div>
+<div><%= @recruitment.work_time%></div>
+<h4>勤務地住所</h4>
+<div><%= @recruitment.prefecture.name%></div>
+<div><%= @recruitment.city%></div>
+<div><%= @recruitment.address%></div>
+<div><%= @recruitment.building%></div>
+<%= link_to "この求人に応募する", company_recruitment_huntings_path(@company, @recruitment.id)%>
