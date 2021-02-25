@@ -47,6 +47,6 @@ class RecruitmentsController < ApplicationController
      private
 
      def recruitment_params
-          params.require(:recruitment).permit(:category, :work, :work_day, :work_time, :prefecture_id, :city, :address, :building, :pr).merge(company_id: @company.id)
+          params.require(:recruitment).permit(:category, :work, :work_day, :work_time, :prefecture_id, :city, :address, :building, :pr, :price).merge(company_id: @company.id)
      end
 end
