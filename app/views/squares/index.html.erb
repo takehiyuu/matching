@@ -1,0 +1,6 @@
+<h1>仕事情報一覧ページ</h1>
+<% @recruitments.each do |recruitment| %>
+<div>
+  <%= link_to "#{recruitment.category}のバイト募集中" %>
+</div>
+<% end %>
