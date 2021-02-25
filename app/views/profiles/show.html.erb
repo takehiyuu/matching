@@ -6,6 +6,7 @@
         <%= link_to "マイページを作成する", new_profile_path%>
      <% else %>
         <%= link_to "マイページの情報を編集する", edit_profile_path(@profile) %>
+        <%= link_to "マイページの情報を削除する", profile_path(@profile), method: :delete %>
      <% end %>
   </div>
 </div>
