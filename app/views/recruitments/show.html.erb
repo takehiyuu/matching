@@ -6,6 +6,6 @@
      <% else %>
         <h2>現在掲載している求人情報</h2>
         <%= link_to "#{@recruitment.category}の募集内容を変更する", edit_company_recruitment_path(@company, @recruitment) %>
-        <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@recruitment)%>
+        <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@company, @recruitment), method: :delete %>
      <% end %>
 </div>
