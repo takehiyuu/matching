@@ -19,7 +19,6 @@ class RecruitmentsController < ApplicationController
           @company_recruitment = Recruitment.where(company_id: @company.id).first
           if @company_recruitment.present?
                @recruitment = Recruitment.find(params[:id])
-               # @recruitment = @company.recruitment
           end
      end
 
@@ -37,6 +36,12 @@ class RecruitmentsController < ApplicationController
           else
                render edit_company_recruitment_path(recruitment)
           end
+     end
+
+     def destroy
+          recruitment = Recruitment.find(params[:id])
+          recruitment.destroy
+          redirect_to company_recruitment_path(current_user.company)
      end
 
      private
