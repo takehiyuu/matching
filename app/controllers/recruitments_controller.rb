@@ -8,23 +8,24 @@ class RecruitmentsController < ApplicationController
           @company = Company.find(params[:company_id])
           recruitment = Recruitment.create(recruitment_params)
           if recruitment.save
-               redirect_to company_recruitment_path(id: @company.recruitment)
+               redirect_to company_recruitment_path(@company, recruitment.id)
           else
                render 'new'
           end
      end
 
      def show
-          @company = Company.find(params[:company_id])
+          @company = current_user.company
           @company_recruitment = Recruitment.where(company_id: @company.id).first
           if @company_recruitment.present?
-               @recruitment = @company.recruitment
+               @recruitment = Recruitment.find(params[:id])
+               # @recruitment = @company.recruitment
           end
      end
 
      def edit
           @company = Company.find(params[:company_id])
-          @recruitment = @company.recruitment
+          @recruitment = Recruitment.find(params[:id])
      end
 
      def update
@@ -32,7 +33,7 @@ class RecruitmentsController < ApplicationController
           recruitment = Recruitment.find(params[:id])
           recruitment.update(recruitment_params)
           if recruitment.save
-               redirect_to company_recruitment_path(id: @company.recruitment)
+               redirect_to company_recruitment_path(@company, recruitment.id)
           else
                render edit_company_recruitment_path(recruitment)
           end

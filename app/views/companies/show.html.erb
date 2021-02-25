@@ -8,5 +8,6 @@
         <h2>現在登録している会社</h2>
         <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company) %>
         <%= link_to "#{@company.name}の求人を募集する", company_recruitment_path(@company)%>
+        <%= link_to "#{@company.name}のデータを削除する", company_path(@company), method: :delete %>
      <% end %>
 </div>
