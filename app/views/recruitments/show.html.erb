@@ -1,11 +1,22 @@
-<%= "#{@company.name}の求人情報ページ" %>
+<%= "#{@recruitment.category}の詳細ページ" %>
 <div>
-  <% if @company_recruitment.blank? %>
-     <h2>現在掲載している求人情報はありません</h2>
-        <%= link_to "求人情報を作成する", new_company_recruitment_path(@company)%>
-     <% else %>
-        <h2>現在掲載している求人情報</h2>
-        <%= link_to "#{@recruitment.category}の募集内容を変更する", edit_company_recruitment_path(@company, @recruitment) %>
-        <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@company, @recruitment), method: :delete %>
-     <% end %>
+
+   <h1>求人内容</h1>
+      <%= @recruitment.category %>
+      <h2><%= @recruitment.pr%></h2>
+      <h4>勤務内容</h4>
+      <div><%= @recruitment.work %></div>
+      <div>給与</div>
+      <div><%= @recruitment.price%></div>
+      <div>勤務日</div>
+      <div><%= @recruitment.work_day%></div>
+      <div>勤務時間</div>
+      <div><%= @recruitment.work_time%></div>
+      <h4>勤務地住所</h4>
+      <div><%= @recruitment.prefecture.name%></div>
+      <div><%= @recruitment.city%></div>
+      <div><%= @recruitment.address%></div>
+      <div><%= @recruitment.building%></div>
 </div>
+
+<h3>応募しているユーザーのプロフィール</h3>
