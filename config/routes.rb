@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :squares
   resources :huntings
   resources :companies do
-    resources :recruitments do
-      resources :huntings
-    end
+    resources :recruitments
   end
 end

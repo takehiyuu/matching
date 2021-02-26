@@ -4,8 +4,7 @@ class ProfilesController < ApplicationController
      end
 
      def create
-          profile = Profile.create(profile_params)
-          if profile.save
+          if profile = Profile.create(profile_params)
                redirect_to profile_path(current_user)
           else
                render "new"

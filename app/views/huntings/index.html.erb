@@ -1,4 +1,9 @@
-<h1>求人内容の確認</h1>
-<%= @recruitment.category %>
-<div>この内容でお間違い無ければ応募するをタップしてください</div>
-<%= link_to "応募する"%>
+<h1>仕事情報一覧ページ</h1>
+<% @recruitments.each do |recruitment| %>
+<div>
+  <%=  "#{recruitment.category}のバイト募集中"%>
+  <% if current_user.profile.present? %>
+  <%= link_to "詳細を見る", hunting_path(recruitment) %>
+  <% end %>
+</div>
+<% end %>
