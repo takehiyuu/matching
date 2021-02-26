@@ -1,4 +1,6 @@
 class RecruitmentsController < ApplicationController
+     def index
+          @companies = 
      def new
           @company = Company.find(params[:company_id])
           @recruitment = Recruitment.new
