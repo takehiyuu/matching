@@ -1,4 +1,4 @@
 class Hunting < ApplicationRecord
-     belongs_to :profile
+     has_one :profile
      belongs_to :recruitment
 end
