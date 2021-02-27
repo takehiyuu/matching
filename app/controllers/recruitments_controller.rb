@@ -1,6 +1,9 @@
 class RecruitmentsController < ApplicationController
      def index
-          @companies = 
+          @company = Company.find(params[:company_id])
+          @recruitments = current_user.company.recruitments
+     end
+
      def new
           @company = Company.find(params[:company_id])
           @recruitment = Recruitment.new
