@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_115428) do
     t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.text "pr"
-    t.date "birth_date", null: false
+    t.integer "birth_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
