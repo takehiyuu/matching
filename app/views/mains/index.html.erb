@@ -1,3 +1,47 @@
 <%= render "shared/header" %>
-<%= link_to "仕事を探す", profile_path(current_user) %>
-<%= link_to "求人を募集する", company_path(current_user) %>
+<div class="main">
+  <div class="title bg-info text-white">
+  <div class="recruit-top">
+    <div class="title-top d-flex justify-content-center">簡単３Stepで空き時間に稼ごう！
+    </div>
+  </div>
+  <div class="card-deck card-size" >
+    <div class="card row card-size">
+      <%= image_tag "pc.webp", class: "card-img"%>
+      <div class="card-body col-sm">
+        <h5 class="card-title text-info">Step １</h5>
+        <p class="card-text text-info">☆簡単登録！アカウント登録をしてマイページを作ろう☆</p>
+      </div>
+    </div>
+    <div class="card row">
+      <%= image_tag "search.jpg", class: "card-img"%>
+      <div class="card-body col-sm">
+        <h5 class="card-title text-info">Step 2</h5>
+        <div class="card-text text-info">☆自分に合うバイトを探そう☆</div>
+      </div>
+    </div>
+    <div class="card row">
+      <%= image_tag "hand.png", class: "card-img"%>
+      <div class="card-body col-sm">
+        <h5 class="card-title text-info">Step 3</h5>
+        <p class="card-text text-info">☆応募しよう☆</p>
+      </div>
+    </div>
+  </div>
+  <div class="recruit d-flex align-items-center justify-content-center">
+    <div class="recruit-sample">
+      あなたにぴったりがきっと見つかる！
+    </div>
+  </div>
+</div>
+<div class="select">
+  <div class="select-botton d-flex justify-content-around">
+    <% if user_signed_in? %>
+     <%= link_to "仕事を探す", profile_path(current_user), type: "button", class: "btn btn-outline-info select-btn d-flex align-items-center justify-content-center" %>
+     <%= link_to "求人を募集する", company_path(current_user), type: "button", class: "btn btn-outline-info select-btn d-flex align-items-center justify-content-center"%>
+    <% else %>
+     <%= link_to "仕事を探す",  new_user_session_path, type: "button", class: "btn btn-outline-info select-btn d-flex align-items-center justify-content-center" %>
+     <%= link_to "求人を募集する", new_user_session_path, type: "button", class: "btn btn-outline-info select-btn d-flex align-items-center justify-content-center"%>
+    <% end %>
+  </div>
+</div>
