@@ -1,13 +1,22 @@
-<%= "#{current_user.name}さんのMy企業ページ" %>
-
-<h2>会社情報</h2>
+<%= render "shared/header" %>
+<div class="company-show d-flex flex-column">
+   <h2 class="company-info text-center">会社情報</h2>
+   <% if @user.blank? %>
+      <%= link_to "会社を登録する", new_company_path, class: "company-info"%>
+   <% else %>
+      <h2 class="company-title text-center">現在登録している会社</h2>
+      <div class="company-body card text-center" style="width: 35rem;">
+         <%= image_tag @company.image%>
+            <h4 class="company-name card-body"><%= "#{@company.name}"%></h4>
+            <h5 class="company-occupaion card-body"><%= "#{@company.occupaion}"%></h5>
+            <p class="company-prefecture card-body"><%= "#{@company.prefecture.name}"%></p>
+            <p class="company-city card-body"><%= "#{@company.city}"%></p>
+            <p class="company-address card-body"><%= "#{@company.address}"%></p>
+            <p class="company-building card-body"><%= "#{@company.building}"%></p>
+            <p class="company-phone card-body"><%= "#{@company.phone_number}"%></p>
+            <%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company), class: "d-flex justify-content-center btn btn-primary mb-3" %>
+            <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company), class: "d-flex justify-content-center btn btn-primary mb-3" %>
+            <%= link_to "#{@company.name}のデータを削除する", company_path(@company), method: :delete, class: "d-flex justify-content-center btn btn-primary" %>
+      </div>
+   <% end %>
 <div>
-  <% if @user.blank? %>
-        <%= link_to "会社を登録する", new_company_path%>
-     <% else %>
-        <h2>現在登録している会社</h2>
-        <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company) %>
-        <%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company)%>
-        <%= link_to "#{@company.name}のデータを削除する", company_path(@company), method: :delete %>
-     <% end %>
-</div>
