@@ -1,2 +1,6 @@
-<div class="main" >ようこそ<%= current_user.name %>さん
-<%= link_to "ログアウト",  destroy_user_session_path, method: :delete %></div>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand mb-0 h1" href="#">アプリ名</a>
+  <% if user_signed_in? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, type: "button", class: "nav-link btn btn-outline-info"%>
+  <% end %>
+</nav>

@@ -1,13 +1,41 @@
-<%= "#{current_user.name}さんのマイページ" %>
-<div>
-  <div>
-    <h2>マイページ情報</h2>
-     <% if @user.blank? %>
-        <%= link_to "マイページを作成する", new_profile_path%>
-     <% else %>
-        <%= link_to "マイページの情報を編集する", edit_profile_path(@profile) %>
-        <%= link_to "マイページの情報を削除する", profile_path(@profile), method: :delete %>
-        <%= link_to "お仕事情報一覧ページを見る", huntings_path %>
-     <% end %>
-  </div>
+<%= render "shared/header" %>
+<div class="profile-info">
+   <div class="profile-main text-center">
+      <div>
+         <h2>マイページ情報</h2>
+         <% if @user.blank? %>
+            <%= link_to "マイページを作成する", new_profile_path%>
+         <% else %>
+            <%= link_to "マイページの情報を編集する", edit_profile_path(@profile) %>
+            <%= link_to "マイページの情報を削除する", profile_path(@profile), method: :delete %>
+            <%= link_to "お仕事情報一覧ページを見る", huntings_path %>
+            <div class="card text-center card-all" style="width: 20em;">
+               <%= image_tag @profile.image%>
+               <div class="card-body d-flex justify-content-center">
+                  <div class="card-kana mr-4">
+                     <div class="card-text"><%= @profile.last_name_kana%></div>
+                     <h4 class="card-title"><%= @profile.last_name%></h4>
+                  </div>
+                  <div class="card-name">
+                     <div class="card-text"><%= @profile.first_name_kana%></div>
+                     <h4 class="card-title"><%= @profile.first_name%></h4>
+                  </div>
+               </div>
+               <div class="list-group list-group-flush d-flex flex-row">
+                  <div class="card-body">
+                     <%= @profile.gender.name%>
+                  </div>
+                  <div class="card-body">
+                     <%= @profile.birth.name%>歳
+                  </div>
+               </div>
+               <h5 class="card-body prefecture">住所周辺情報</h5>
+               <div class="card-body d-flex flex-row">
+                  <div class="card-body"><%= @profile.prefecture.name%></div>
+                  <div class="card-body"><%= @profile.city%></div>
+               </div>
+            </div>
+         <% end %>
+      </div>
+   </div>
 </div>

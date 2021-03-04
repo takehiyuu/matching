@@ -11,7 +11,7 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.integer :prefecture_id,   null: false
       t.string  :city,            null: false
       t.text    :pr
-      t.date    :birth_date,      null:false
+      t.integer :birth_id,        null:false
       t.references :user, null: false, foreign_key: true
 
 

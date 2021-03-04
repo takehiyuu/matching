@@ -1,0 +1,59 @@
+.main {
+     width: 100%;
+     height: 100%;
+}
+
+.title {
+     font-family: monospace;
+}
+
+.title-top { 
+     font-size: 30px;
+}
+
+.recruit-top {
+     width: 100%;
+     height: 100px;
+}
+
+.recruit {
+     width: 100%;
+     height: 200px;
+}
+.recruit-sample {
+     font-size: 30px;
+}
+
+.card-img {
+     width: 100%;
+     height: 350px;
+}
+
+.area {
+     width: 100%;
+     height: 500px;
+}
+
+.area-text {
+     font-size: 30px;
+     margin-bottom: 30px;
+}
+
+.card-deck {
+     padding: 20px;
+}
+
+.select {
+     width: 100%;
+     height: 200px;
+}
+
+.select-btn {
+     width: 80%;
+     height: 200px;
+     margin: 20px;
+}
+
+.card-size {
+     height: 500px;
+}
