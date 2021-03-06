@@ -28,11 +28,20 @@
 - 労働者は働きたい日、働きたい環境に合わせてその条件に合う企業を見つけることができる
 
 # 機能一覧
-- ユーザー登録・編集（gem devise)
+- ユーザー登録（gem devise)
 - ログイン、ログアウト機能(gem devise)
-- プロフィール登録・編集機能（active hash）
-- 企業登録・編集・一覧表示機能（active hash）
+- プロフィール作成機能（active hash）
+- プロフィール詳細表示機能（active hash）
+- プロフィール編集・削除機能（active hash）
+- 企業情報作成機能（active hash）
+- 企業情報詳細表示機能（active hash）
+- 企業情報編集・削除機能（active hash）
+- 求人情報作成機能（active hash）
+- 求人情報一覧・詳細表示機能（active hash）
+- 求人情報編集・削除機能（active hash）
 - マッチング機能
+- マッチング状態表示機能
+- 求人採用機能
 
 # 使用技術
 ## フロントエンド
