@@ -1,22 +1,44 @@
 <%= render "shared/header" %>
-<div class="company-show d-flex flex-column">
+<div class="company-show">
    <h2 class="company-info text-center">会社情報</h2>
    <% if @user.blank? %>
       <%= link_to "会社を登録する", new_company_path, class: "company-info"%>
    <% else %>
       <h2 class="company-title text-center">現在登録している会社</h2>
-      <div class="company-body card text-center" style="width: 35rem;">
+      <div class="link-contents text-center">
+         <%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company),class: "m-2"%>
+         <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company),class: "m-2"%>
+         <%= link_to "#{@company.name}のデータを削除する", company_path(@company),class: "m-2"%>
+      </div>
+      <div class="company-body card" style="width: 44rem;">
          <%= image_tag @company.image%>
-            <h4 class="company-name card-body"><%= "#{@company.name}"%></h4>
-            <h5 class="company-occupaion card-body"><%= "#{@company.occupaion}"%></h5>
-            <p class="company-prefecture card-body"><%= "#{@company.prefecture.name}"%></p>
-            <p class="company-city card-body"><%= "#{@company.city}"%></p>
-            <p class="company-address card-body"><%= "#{@company.address}"%></p>
-            <p class="company-building card-body"><%= "#{@company.building}"%></p>
-            <p class="company-phone card-body"><%= "#{@company.phone_number}"%></p>
-            <%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company), class: "d-flex justify-content-center btn btn-primary mb-3" %>
-            <%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company), class: "d-flex justify-content-center btn btn-primary mb-3" %>
-            <%= link_to "#{@company.name}のデータを削除する", company_path(@company), method: :delete, class: "d-flex justify-content-center btn btn-primary" %>
+         <div class="company-contents  d-flex justify-content-center">
+            <div class="card" style="width: 22rem;">
+               <div class="card-header">
+                  事業内容
+               </div>
+               <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%= "#{@company.occupaion}"%></li>
+               </ul>
+               <div class="card-footer">
+                  電話番号
+               </div>
+               <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%= "#{@company.phone_number}"%></li>
+               </ul>
+            </div>
+            <div class="card" style="width: 22rem;">
+               <div class="card-header">
+                  住所情報
+               </div>
+               <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%= "#{@company.prefecture.name}"%></li>
+                  <li class="list-group-item"><%= "#{@company.city}"%></li>
+                  <li class="list-group-item"><%= "#{@company.address}"%></li>
+                  <li class="list-group-item"><%= "#{@company.building}"%></li>
+               </ul>
+            </div>
+         </div>
       </div>
    <% end %>
 <div>
