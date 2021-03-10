@@ -1,23 +1,69 @@
 <%= render "shared/header" %>
-<%= "#{@recruitment.category}の詳細ページ" %>
-<div>
-
-   <h1>求人内容</h1>
-      <%= @recruitment.category %>
-      <h2><%= @recruitment.pr%></h2>
-      <h4>勤務内容</h4>
-      <div><%= @recruitment.work %></div>
-      <div>給与</div>
-      <div><%= @recruitment.price%></div>
-      <div>勤務日</div>
-      <div><%= @recruitment.work_day%></div>
-      <div>勤務時間</div>
-      <div><%= @recruitment.work_time%></div>
-      <h4>勤務地住所</h4>
-      <div><%= @recruitment.prefecture.name%></div>
-      <div><%= @recruitment.city%></div>
-      <div><%= @recruitment.address%></div>
-      <div><%= @recruitment.building%></div>
+<h3 class="text-center mb-5 mt-5"><%= "#{@recruitment.category}の詳細ページ" %></h3>
+<div class="text-center m-3">
+   <%= link_to "#{@recruitment.category}の募集内容を変更する", edit_company_recruitment_path(@recruitment), class: "mr-2" %>
+   <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@recruitment), method: :delete, class: "ml-2" %>
+</div>
+<div class="recruitment card mb-5">
+   <div class="recruitment-images d-flex justify-content-between">
+      <% @recruitment.images.each do |image| %>
+         <%= image_tag image, class:'images mb-5'%>
+      <% end %>
+   </div>
+   <div class="recruit-info card-body">
+      <h5 class="recruit-category mb-3">
+         <%= @recruitment.category %>
+      </h5>
+      <h4 class="card-title mb-3">
+         <%= @recruitment.work %>
+      </h4>
+      <hr>
+      <div class="card-text d-flex justify-content-around mt-5">
+         <div>
+            <h4 class="text-center">給与</h4>
+            <%= @recruitment.price %>
+         </div>
+         <div>
+            <h4 class="text-center">勤務日</h4>
+            <%= @recruitment.work_day%>
+         </div>
+         <div>
+            <h4 class="text-center">勤務時間</h4>
+            <%= @recruitment.work_time%>
+         </div>
+      </div>
+      <hr>
+      <div class="card-text mt-5">
+         <h3 class="text-center">勤務地住所</h3>
+         <div class="address-group d-flex justify-content-center">
+            <div class="address-category ml-2">
+               <%= @recruitment.prefecture.name%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.city%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.address%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.building%>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <div class="card-text mt-5">
+         <div class="address-category">
+            <%= @recruitment.pr%>
+         </div>
+      </div>
+   </div>
 </div>
 
-<h3>応募しているユーザーのプロフィール</h3>
+<div class="card" style="width: 18rem;">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">応募しているユーザーのプロフィール</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>

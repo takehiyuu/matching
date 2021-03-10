@@ -1,0 +1,18 @@
+.recruitment {
+     width: 90%;
+     height: 100%;
+     margin: 0 auto;
+}
+
+.images {
+     width: 33%;
+     margin: 0 5;
+}
+
+.recruit-info {
+     padding: 20px;
+}
+
+.address-category {
+     font-size: 22px;
+}
