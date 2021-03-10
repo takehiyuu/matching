@@ -1,111 +1,89 @@
-<%= form_with model: [@company, @recruitment], local: true do |f| %>
-
-<div class='form-wrap'>
+<div class="recruitment-main">
   <div class='form-header'>
-    <h1 class='form-header-text'>
+    <h1 class='form-header-text text-center mt-5'>
       募集内容の編集
     </h1>
   </div>
-  <div class="img-upload">
-      <div class="weight-bold-text">
-        求人に載せる写真
-        <span class="indispensable">必須</span>
-      </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image %>
-      </div>
-      <div id="image-list"></div>
+  <%= form_with model: [@company, @recruitment], local: true do |f| %>
+<div class="card recruit-body" style="width: 60rem;">
+  <div class="img-upload text-center">
+    <div class=" weight-bold-text">
+      <h3 class="mt-5">求人に載せる写真</h3>
     </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">職種</label>
-      <span class="indispensable">必須</span>
+    <div class="click-upload">
+      <p>３枚まで選択できます
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :images, class: "text-center", name: 'recruitment[images][]', id: "company_image" %>
     </div>
-  <div class='input-name-wrap'>
-      <%= f.text_area :category, class:"input-name", id:"category", placeholder:"例) 飲食業" %>
-    </div>
+    <div class="recruit-image d-flex justify-content-center", id="image-list" ></div>
+      <% @recruitment.images.each do |image| %>
+        <%= image_tag image, class: 'images mb-5' %>
+      <% end %>
   </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">勤務内容</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :work, class:"input-name", id:"work", placeholder:"例) ホールスタッフ" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">勤務日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :work_day, class:"input-name", id:"work_day", placeholder:"例) 何月 何日" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">勤務時間</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :work_time, class:"input-name", id:"work_time", placeholder:"例) 何時~何時まで" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">給与</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-name-wrap'>
-      <%= f.text_area :price, class:"input-name", id:"price", placeholder:"例) 時給1000円" %>
-    </div>
-  </div>
-  <div class='shipping-address-form'>
-      <h1 class='info-input-haedline'>
-        勤務地情報
-      </h1>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">都道府県</label>
-          <span class="indispensable">必須</span>
+    <div class="recruit-image", id="image-list" ></div>
+    <div class="card-body">
+      <hr>
+      <h3 class="card-title text-center m-5">募集内容の入力</h3>
+      <hr>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-around">
+          <div class="card-title d-flex flex-column mt-2"><h5>業種を入力してください</h5>
+            <%= f.text_field :category, class:"category mt-2", id:"category", placeholder:"例) 居酒屋" %>
+          </div>
+          <div class="card-title d-flex flex-column mt-2"><h5>勤務日を入力してください</h5>
+            <%= f.text_field :work_day, class:"work_day mt-2", id:"work_day", placeholder:"例) 何月 何日" %>
+          </div>
+        </li>
+        <li class="list-group-item text-center">
+          <h4>勤務内容を入力してください</h4>
+          <%= f.text_area :work, class:"work m-5", id:"work", placeholder:"例) ホールスタッフ募集！
+      簡単な接客やテーブルの片付けなど" %>
+          <div class="work-info d-flex justify-content-around text-center">
+            <div class="work-time-info">
+              <h5>勤務時間</h5>
+              <%= f.text_field :work_time, class:"work-time mb-3", id:"work_time", placeholder:"例) AM◯:00~PM◯:00まで" %>
+            </div>
+            <div class="work-place-info">
+              <h5>給与</h5>
+              <%= f.text_field :price, class:"work-time mb-3", id:"price", placeholder:"例) 時給1000円" %>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item mt-5"><h3 class="text-center">勤務地情報を入力してください</h3>
+          <div class="group-content d-flex justify-content-around">
+            <div class="info-group">
+              <div class="prefecture-info mt-5">都道府県
+                <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form-control border-dark mt-2", id:"prefecture"}) %>
+              </div>
+              <div class="city-info mt-4">市区町村
+                <%= f.text_field :city, class:"city mt-2 mb-5", id:"city", placeholder:"例）横浜市緑区"%>
+              </div>
+            </div>
+            <div class="info-group">
+              <div class="address-info d-flex flex-column mt-5">番地
+                <%= f.text_field :address, class:"address mt-2", id:"address", placeholder:"例）5-4"%>
+              </div>
+              <div class="building-info d-flex flex-column mt-4">建物情報
+                <%= f.text_field :building, class:"building mt-2 mb-5", id:"building", placeholder:"例）◯◯ビル5階"%>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div class="pr-content card-body mt-5">
+          <div class="pr-info text-center"><h3>お伝えしておくことや注意事項</h3>
+            <%= f.text_area :pr, class:"pr form-control", id:"pr", placeholder:"例) ・お持ち頂くもの
+            ・服装
+            ・給与の支払い方法
+            ・注意事項"%>
+          </div>
         </div>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>
+      </ul>
+      <div class="actions d-flex justify-content-center">
+        <%= f.submit "作成する" , class: "btn btn-outline-primary btn-lg"%>
       </div>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">市区町村</label>
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_field :city, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
-      </div>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">番地</label>
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_field :address, class:"input-default", id:"address", placeholder:"例）5-4"%>
-      </div>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">建物情報</label>
-          <span class="indispensable">任意</span>
-        </div>
-        <%= f.text_field :building, class:"input-default", id:"building", placeholder:"例）◯◯ビル5階"%>
-      </div>
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">求人のキャッチフレーズ</label>
-          <span class="indispensable">任意</span>
-        </div>
-        <%= f.text_field :pr, class:"input-default", id:"pr", placeholder:"例) 簡単な説明や紹介など"%>
-      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
+  <% end %>
 </div>
-<% end %>
+
