@@ -1,0 +1,70 @@
+.recruit-img {
+     width: 200px;
+}
+
+.recruit-body {
+     height: 100%;
+     margin: 20px auto;
+}
+
+.category {
+     height: 50px;
+     width: 200px;
+     margin: 0 auto;
+}
+
+.work_day {
+     height: 50px;
+     width: 150px;
+     margin: 0 auto;
+}
+
+.work {
+     height: 150px;
+     width: 400px;
+     margin: 0 auto;
+}
+
+.work-time {
+     height: 50px;
+     width: 220px;
+}
+
+.prefecture-info {
+     width: 200px;
+}
+
+.city-info {
+     width: 200px;
+}
+.city {
+     width: 200px;
+     height: 40px;
+}
+
+.address-info {
+     width: 200px;
+}
+.address {
+     width: 200px;
+     height: 40px;
+}
+
+.building-info {
+     width: 200px;
+}
+.building {
+     width: 200px;
+     height: 40px;
+}
+
+.pr-info {
+     width: 700px;
+}
+#pr {
+     width: 700px;
+     height: 500px;
+}
+.pr-content {
+     margin: 0 auto;
+}
