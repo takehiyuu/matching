@@ -1,4 +1,10 @@
 <%= render "shared/header" %>
+<% if @company_recruitment.blank?%>
+   <div class="recruitment-blank text-center">
+      <h3>現在募集中の求人はありません</h3>
+      <%= link_to "#{@company.name}の求人を募集する", new_company_recruitment_path(@company.id),class: "mt-5"%>
+   </div>
+<% else %>
 <h3 class="text-center mb-5 mt-5"><%= "#{@recruitment.category}の詳細ページ" %></h3>
 <div class="text-center m-3">
    <%= link_to "#{@recruitment.category}の募集内容を変更する", edit_company_recruitment_path(@recruitment), class: "mr-2" %>
@@ -59,7 +65,7 @@
    </div>
 </div>
 
-<div class="card" style="width: 18rem;">
+<div class="user-profile card" style="width: 18rem;">
   <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
   <div class="card-body">
     <h5 class="card-title">応募しているユーザーのプロフィール</h5>
@@ -67,3 +73,4 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+<% end %>

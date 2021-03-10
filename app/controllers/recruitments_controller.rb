@@ -28,7 +28,7 @@ class RecruitmentsController < ApplicationController
      end
 
      def edit
-          @company = Company.find(params[:company_id])
+          @company = current_user.company
           @recruitment = Recruitment.find(params[:id])
      end
 
