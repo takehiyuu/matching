@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_115428) do
   end
 
   create_table "recruitments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.string "category", null: false
     t.string "price", null: false
     t.string "work", null: false

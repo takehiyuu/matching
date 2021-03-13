@@ -1,43 +1,44 @@
 <%= render "shared/header" %>
-<% if @company_recruitment.blank?%>
+<% if @recruitments.blank?%>
    <div class="recruitment-blank text-center">
       <h3>現在募集中の求人はありません</h3>
       <%= link_to "#{@company.name}の求人を募集する", new_company_recruitment_path(@company.id),class: "mt-5"%>
    </div>
 <% else %>
-<h2>現在掲載している求人情報</h2>
-<% @recruitments.each do |recruitment| %>
-<h3 class="text-center mb-5 mt-5"><%= "#{@recruitment.category}の詳細ページ" %></h3>
-<div class="text-center m-3">
-   <%= link_to "#{@recruitment.category}の募集内容を変更する", edit_company_recruitment_path(@recruitment), class: "mr-2" %>
-   <%= link_to "#{@recruitment.category}の掲載求人を取り消す", company_recruitment_path(@recruitment), method: :delete, class: "ml-2" %>
-</div>
-<div class="recruitment card mb-5">
-   <div class="recruitment-images d-flex justify-content-between">
-      <% @recruitment.images.each do |image| %>
-         <%= image_tag image, class:'images mb-5'%>
-      <% end %>
-   </div>
-   <div class="recruit-info card-body">
-      <h5 class="recruit-category mb-3">
-         <%= @recruitment.category %>
-      </h5>
-      <h4 class="card-title mb-3">
-         <%= @recruitment.work %>
-      </h4>
-      <hr>
-      <div class="card-text d-flex justify-content-around mt-5">
-         <div>
-            <h4 class="text-center">給与</h4>
-            <%= @recruitment.price %>
+   <h2 class="text-center mt-5">現在掲載している求人情報</h2>
+   <% @recruitments.each do |recruitment| %>
+   <h3 class="text-center mb-5 mt-5"><%=link_to "#{recruitment.name}の詳細ページ",company_recruitment_path(@company,recruitment) %></h3>
+   <div class="recruitment card mb-5">
+      <div class="recruitment-images d-flex justify-content-between">
+         <% recruitment.images.each do |image| %>
+            <%= image_tag image, class:'images mb-5'%>
+         <% end %>
+      </div>
+      <div class="recruit-info card-body">
+         <h3 class="recruit-category text-center mb-5">
+            <%= recruitment.name %>
+         </h3>
+         <div class="recruit-form d-flex justify-content-around">
+            <h5 class="recruit-category mb-3">
+               <%= recruitment.category %>
+            </h5>
+            <h4 class="card-title mb-3">
+               <%= recruitment.work %>
+            </h4>
          </div>
+         <hr>
+         <div class="card-text d-flex justify-content-around mt-5">
+            <div>
+               <h4 class="text-center">給与</h4>
+               <%= recruitment.price %>
+            </div>
          <div>
             <h4 class="text-center">勤務日</h4>
-            <%= @recruitment.work_day%>
+            <%= recruitment.work_day%>
          </div>
          <div>
             <h4 class="text-center">勤務時間</h4>
-            <%= @recruitment.work_time%>
+            <%= recruitment.work_time%>
          </div>
       </div>
       <hr>
@@ -45,23 +46,23 @@
          <h3 class="text-center">勤務地住所</h3>
          <div class="address-group d-flex justify-content-center">
             <div class="address-category ml-2">
-               <%= @recruitment.prefecture.name%>
+               <%= recruitment.prefecture.name%>
             </div>
             <div class="address-category ml-2">
-               <%= @recruitment.city%>
+               <%= recruitment.city%>
             </div>
             <div class="address-category ml-2">
-               <%= @recruitment.address%>
+               <%= recruitment.address%>
             </div>
             <div class="address-category ml-2">
-               <%= @recruitment.building%>
+               <%= recruitment.building%>
             </div>
          </div>
       </div>
       <hr>
       <div class="card-text mt-5">
          <div class="address-category">
-            <%= @recruitment.pr%>
+            <%= recruitment.pr%>
          </div>
       </div>
    </div>

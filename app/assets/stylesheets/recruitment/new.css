@@ -13,6 +13,12 @@
      margin: 0 auto;
 }
 
+.name {
+     height: 50px;
+     width: 200px;
+     margin: 0 auto;     
+}
+
 .work_day {
      height: 50px;
      width: 150px;

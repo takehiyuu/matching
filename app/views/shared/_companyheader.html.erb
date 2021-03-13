@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: white;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">アプリ名</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,16 +6,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active ml-3">
-        <a class="nav-link btn-outline-secondary"><%= link_to "#{@company.name}の求人を募集する", new_company_recruitment_path(@company.id) %></a>
+        <a class="nav-link"><%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company)%></a>
       </li>
       <li class="nav-item ml-3">
-        <a class="nav-link btn-outline-secondary"><%= link_to "#{@company.name}のページ", company_path(current_user) %></a>
+        <a class="nav-link"><%= link_to "#{@company.name}の情報を編集する", edit_company_path(@company)%></a>
       </li>
       <li class="nav-item ml-3">
         <a class="nav-link"><%= link_to "#{@company.name}のデータを削除する", company_path(@company), method: :delete %></a>
       </li>
       <li class="nav-item ml-3">
-        <a class="nav-link  btn-outline-secondary"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
+        <a class="nav-link disabled"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
       </li>
     </ul>
   </div>

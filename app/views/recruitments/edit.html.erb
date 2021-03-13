@@ -1,7 +1,7 @@
 <div class="recruitment-main">
   <div class='form-header'>
     <h1 class='form-header-text text-center mt-5'>
-      募集内容の編集
+      求人募集の作成
     </h1>
   </div>
   <%= form_with model: [@company, @recruitment], local: true do |f| %>
@@ -28,10 +28,13 @@
       <hr>
       <ul class="list-group list-group-flush">
         <li class="list-group-item d-flex justify-content-around">
-          <div class="card-title d-flex flex-column mt-2"><h5>業種を入力してください</h5>
+          <div class="card-title d-flex flex-column mt-2"><h5 class="text-center">店名</h5>
+            <%= f.text_field :name, class:"name mt-2", id:"name", placeholder:"例) お店の名前" %>
+          </div>        
+          <div class="card-title d-flex flex-column mt-2"><h5 class="text-center">業種を入力してください</h5>
             <%= f.text_field :category, class:"category mt-2", id:"category", placeholder:"例) 居酒屋" %>
           </div>
-          <div class="card-title d-flex flex-column mt-2"><h5>勤務日を入力してください</h5>
+          <div class="card-title d-flex flex-column mt-2"><h5 class="text-center">勤務日を入力してください</h5>
             <%= f.text_field :work_day, class:"work_day mt-2", id:"work_day", placeholder:"例) 何月 何日" %>
           </div>
         </li>
@@ -72,10 +75,11 @@
         </li>
         <div class="pr-content card-body mt-5">
           <div class="pr-info text-center"><h3>お伝えしておくことや注意事項</h3>
-            <%= f.text_area :pr, class:"pr form-control", id:"pr", placeholder:"例) ・お持ち頂くもの
-            ・服装
-            ・給与の支払い方法
-            ・注意事項"%>
+            <%= f.text_area :pr, class:"pr form-control", id:"pr", placeholder:"例) 　【お持ち頂くもの】
+            ・黒の長ズボン
+            【給与の支払い方法】
+            ・振込　・手渡し
+            【注意事項】"%>
           </div>
         </div>
       </ul>

@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+     before_action :user_where, only: [:index, :show]
 
      def index
           @companies = Company.all
@@ -18,10 +19,6 @@ class CompaniesController < ApplicationController
      end
 
      def show
-          @user = Company.where(user_id: current_user.id)
-          if @user.present?
-               @company = current_user.company
-          end
      end
 
      def edit
@@ -48,6 +45,13 @@ class CompaniesController < ApplicationController
 
      def company_params
           params.require(:company).permit(:name, :occupaion, :prefecture_id, :phone_number, :city, :address, :image, :building).merge(user_id: current_user.id)
+     end
+
+     def user_where
+          @user = Company.where(user_id: current_user.id)
+          if @user.present?
+               @company = current_user.company
+          end
      end
 
      
