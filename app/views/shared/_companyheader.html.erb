@@ -4,7 +4,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto d-flex justify-content-end">
+    <% if @user.blank?%>
+      <li class="nav-item active ml-3">
+        <a class="nav-link"><%= link_to "会社を登録する", new_company_path%></a>
+      </li>
+      <li class="nav-item ml-3">
+        <a class="nav-link disabled"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
+      </li>      
+    <% else %>
       <li class="nav-item active ml-3">
         <a class="nav-link"><%= link_to "#{@company.name}の求人を募集する", company_recruitments_path(@company)%></a>
       </li>
@@ -17,6 +25,7 @@
       <li class="nav-item ml-3">
         <a class="nav-link disabled"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
       </li>
+    <% end %>
     </ul>
   </div>
 </nav>
