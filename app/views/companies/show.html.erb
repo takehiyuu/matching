@@ -3,7 +3,6 @@
    <h2 class="company-info text-center">会社情報</h2>
    <% if @user.blank? %>
       <h3 class="company-info text-center">現在登録されている会社はございません</h3>
-      <h3 class="company-info text-center"><%= link_to "会社を登録する", new_company_path%></h3>
    <% else %>
       <h2 class="company-title text-center mb-5">現在登録している会社</h2>
       <div class="company-body card" style="width: 44rem;">
