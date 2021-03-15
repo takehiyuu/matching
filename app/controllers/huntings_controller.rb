@@ -6,7 +6,9 @@ class HuntingsController < ApplicationController
 
      def create
           @hunting = Hunting.new(hunting_params)
-          @hunting.save
+          if @hunting.save
+               redirect_to profile_path(current_user.profile)
+          end
      end
 
      def show
