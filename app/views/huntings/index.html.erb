@@ -1,10 +1,78 @@
-<%= render "shared/header" %>
-<h1>仕事情報一覧ページ</h1>
+<%= render "shared/huntingheader" %>
+<h1 class="text-center mt-5">バイト募集一覧</h1>
 <% @recruitments.each do |recruitment| %>
-<div>
-  <%=  "#{recruitment.category}のバイト募集中"%>
-  <% if current_user.profile.present? %>
-  <%= link_to "詳細を見る", hunting_path(recruitment) %>
-  <% end %>
-</div>
+  <div>
+    <div class="recruitment card mt-5 mb-5">
+      <div class="recruitment-images d-flex justify-content-between">
+          <% recruitment.images.each do |image| %>
+            <%= image_tag image, class:'images mb-5'%>
+          <% end %>
+      </div>
+    <div class="recruit-info card-body">
+        <h3 class="recruit-category text-center mb-5">
+          <%= recruitment.name %>
+        </h3>
+        <div class="recruit-form d-flex justify-content-around">
+          <h5 class="recruit-category mb-3">
+              <%= recruitment.category %>
+          </h5>
+          <h4 class="card-title mb-3">
+              <%= recruitment.work %>
+          </h4>
+        </div>
+        <hr>
+        <div class="card-text d-flex justify-content-around mt-5">
+          <div>
+              <h4 class="text-center">給与</h4>
+              <%= recruitment.price %>
+          </div>
+          <div>
+              <h4 class="text-center">勤務日</h4>
+              <%= recruitment.work_day%>
+          </div>
+          <div>
+              <h4 class="text-center">勤務時間</h4>
+              <%= recruitment.work_time%>
+          </div>
+        </div>
+        <hr>
+        <div class="card-text mt-5">
+          <h3 class="text-center">勤務地住所</h3>
+          <div class="address-group d-flex justify-content-center">
+              <div class="address-category ml-2">
+                <%= recruitment.prefecture.name%>
+              </div>
+              <div class="address-category ml-2">
+                <%= recruitment.city%>
+              </div>
+              <div class="address-category ml-2">
+                <%= recruitment.address%>
+              </div>
+              <div class="address-category ml-2">
+                <%= recruitment.building%>
+              </div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-text mt-5">
+          <div class="address-category">
+            <%= recruitment.pr %>
+          </div>
+        </div>
+        <hr>
+        <% if current_user.profile.present? %>
+        <div class="card-text text-center mt-5">
+          <div class="address-category">
+            <%= link_to "このバイトに応募する",hunting_path(recruitment.id) %>
+          </div>
+        </div>
+        <% else %>
+        <div class="card-text text-center mt-5">
+          <div class="address-category">
+            <%= link_to "プロフィールを作成して応募する",hunting_path(recruitment) %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
 <% end %>

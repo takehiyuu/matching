@@ -1,22 +1,72 @@
-<h1>求人内容の確認</h1>
-<%= @recruitment.category %>
-<h2><%= @recruitment.pr%></h2>
-<h4>勤務内容</h4>
-<div><%= @recruitment.work %></div>
-<div>給与</div>
-<div><%= @recruitment.price%></div>
-<div>勤務日</div>
-<div><%= @recruitment.work_day%></div>
-<div>勤務時間</div>
-<div><%= @recruitment.work_time%></div>
-<h4>勤務地住所</h4>
-<div><%= @recruitment.prefecture.name%></div>
-<div><%= @recruitment.city%></div>
-<div><%= @recruitment.address%></div>
-<div><%= @recruitment.building%></div>
-<div>この内容でお間違い無ければ応募するをタップしてください</div>
-
-<%= form_with model: @hunting, url: huntings_path, local: true do |f| %>
-<%= f.hidden_field :recruitment_id, value: @recruitment.id%>
-<%= f.submit "応募する" %>
-<% end %>
+<h1 class="text-center mt-5">求人内容の確認</h1>
+<div class="recruitment card mt-5 mb-5">
+   <div class="recruitment-images d-flex justify-content-between">
+      <% @recruitment.images.each do |image| %>
+         <%= image_tag image, class:'images mb-5'%>
+      <% end %>
+   </div>
+   <div class="recruit-info card-body">
+      <h3 class="recruit-category text-center mb-5">
+         <%= @recruitment.name %>
+      </h3>
+      <div class="recruit-form d-flex justify-content-around">
+         <h5 class="recruit-category mb-3">
+            <%= @recruitment.category %>
+         </h5>
+         <h4 class="card-title mb-3">
+            <%= @recruitment.work %>
+         </h4>
+      </div>
+      <hr>
+      <div class="card-text d-flex justify-content-around mt-5">
+         <div>
+            <h4 class="text-center">給与</h4>
+            <%= @recruitment.price %>
+         </div>
+         <div>
+            <h4 class="text-center">勤務日</h4>
+            <%= @recruitment.work_day%>
+         </div>
+         <div>
+            <h4 class="text-center">勤務時間</h4>
+            <%= @recruitment.work_time%>
+         </div>
+      </div>
+      <hr>
+      <div class="card-text mt-5">
+         <h3 class="text-center">勤務地住所</h3>
+         <div class="address-group d-flex justify-content-center">
+            <div class="address-category ml-2">
+               <%= @recruitment.prefecture.name%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.city%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.address%>
+            </div>
+            <div class="address-category ml-2">
+               <%= @recruitment.building%>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <div class="card-text mt-5">
+         <div class="address-category">
+            <%= @recruitment.pr%>
+         </div>
+      </div>
+      <hr>
+      <div class="card-text mt-5">
+         <div class="address-category">
+           <h3 class="text-center">このバイトでお間違い無ければ応募するをタップしてください</h3>
+               <%= form_with model: @hunting, url: huntings_path, local: true do |f| %>
+               <div class="hunting-btn text-center">
+                    <%= f.hidden_field :recruitment_id, value: @recruitment.id%>
+                    <%= f.submit "応募する", class:"btn-lg btn-outline-secondary mt-5 mb-5"%>
+               </div>
+               <% end %>
+         </div>
+      </div>
+   </div>
+</div>
