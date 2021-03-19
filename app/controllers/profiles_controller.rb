@@ -15,6 +15,10 @@ class ProfilesController < ApplicationController
           @user = Profile.where(user_id: current_user.id)
           if @user.present?
                @profile = current_user.profile
+               @hunting = Hunting.where(profile_id: current_user.profile.id).first
+               if @hunting.present?
+                    @recruitment = Recruitment.find(@hunting.recruitment_id)
+               end
           end
      end
 

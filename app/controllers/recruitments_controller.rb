@@ -1,9 +1,16 @@
 class RecruitmentsController < ApplicationController
-     before_action :recruitment_where, only: [:show]
 
      def index
           @company = Company.find(params[:company_id])
           @recruitments = current_user.company.recruitments
+          @company_recruitment = Recruitment.where(company_id: @company.id).first
+          if @company_recruitment.present?
+               @recruitment = Recruitment.find(params[:id])
+          end
+          @hunting = Hunting.where(recruitment_id: @recruitment.id).first
+          if @hunting.present?
+               @profile = Profile.find(@hunting.profile_id)
+          end
      end
 
      def new
@@ -22,6 +29,16 @@ class RecruitmentsController < ApplicationController
      end
 
      def show
+          @company = current_user.company
+          @company_recruitment = Recruitment.where(company_id: @company.id).first
+          if @company_recruitment.present?
+               @recruitment = Recruitment.find(params[:id])
+          end
+
+          @hunting = Hunting.where(recruitment_id: @recruitment.id).first
+          if @hunting.present?
+               @profile = Profile.find(@hunting.profile_id)
+          end
      end
 
      def edit
@@ -50,13 +67,5 @@ class RecruitmentsController < ApplicationController
 
      def recruitment_params
           params.require(:recruitment).permit(:name, :category, :work, :work_day, :work_time, :prefecture_id, :city, :address, :building, :pr, :price, images: []).merge(company_id: @company.id)
-     end
-
-     def recruitment_where
-          @company = current_user.company
-          @company_recruitment = Recruitment.where(company_id: @company.id).first
-          if @company_recruitment.present?
-               @recruitment = Recruitment.find(params[:id])
-          end
      end
 end
