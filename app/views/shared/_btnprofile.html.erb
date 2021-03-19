@@ -1,0 +1,11 @@
+<% if(@user.present?) %>
+     <% if (@hunting.present?) && (current_user.id == @profile.user_id) %>
+     <div class="btn-card">
+          <div class="shared-btn card" style="width: 10rem;">
+          <div class="card-body">
+          <h5 class="card-title text-center"><%= link_to "#{@recruitment.name}に応募中", hunting_path(@recruitment)%></h5>
+          </div>
+          </div>
+     </div>
+     <% end %>
+<% end %>
