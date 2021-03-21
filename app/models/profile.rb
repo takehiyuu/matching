@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
      belongs_to :user
-     has_one :hunting
+     has_many :huntings, dependent: :destroy
      has_one_attached :image
      
      validates :prefecture_id, numericality: { other_than: 1 } 
