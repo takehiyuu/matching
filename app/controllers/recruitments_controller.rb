@@ -3,14 +3,6 @@ class RecruitmentsController < ApplicationController
      def index
           @company = Company.find(params[:company_id])
           @recruitments = current_user.company.recruitments
-          @company_recruitment = Recruitment.where(company_id: @company.id).first
-          if @company_recruitment.present?
-               @recruitment = Recruitment.find(params[:id])
-          end
-          @hunting = Hunting.where(recruitment_id: @recruitment.id).first
-          if @hunting.present?
-               @profile = Profile.find(@hunting.profile_id)
-          end
      end
 
      def new
