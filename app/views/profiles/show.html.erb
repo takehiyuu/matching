@@ -1,9 +1,10 @@
 <%= render "shared/profileheader" %>
+<%= render "shared/btnprofile" %>
 <div class="profile-info">
    <div class="profile-main text-center">
       <div>
          <h2 class="mt-5 mb-5">マイページ情報</h2>
-         <% if @user.blank? %>
+         <% if (@user.blank?) %>
             <%= link_to "マイページを作成する", new_profile_path%>
          <% else %>
             <div class="card text-center card-all" style="width: 20em;">

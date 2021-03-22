@@ -1,0 +1,9 @@
+<% if @hunting.present?%>
+<div class="btn-card">
+     <div class="shared-btn card" style="width: 20rem;">
+          <div class="card-body">
+          <h5 class="card-title text-center"><%= link_to "#{@profile.last_name}さんから応募がきています", profile_path(@profile)%></h5>
+          </div>
+     </div>
+</div>
+<% end %>

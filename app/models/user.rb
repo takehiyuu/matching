@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :profile
-  has_one :company
+  has_one :profile, dependent: :destroy
+  has_one :company, dependent: :destroy
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8}+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には半角英数8文字で設定してください'
