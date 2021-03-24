@@ -27,9 +27,9 @@ class RecruitmentsController < ApplicationController
                @recruitment = Recruitment.find(params[:id])
           end
 
-          @hunting = Hunting.where(recruitment_id: @recruitment.id).first
+          @hunting = Hunting.where(recruitment_id: @recruitment).first
           if @hunting.present?
-               @profile = Profile.find(@hunting.profile_id)
+          @profile = Profile.find(@hunting.profile_id)
           end
      end
 
