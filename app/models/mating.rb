@@ -1,0 +1,2 @@
+class Mating < ApplicationRecord
+end
