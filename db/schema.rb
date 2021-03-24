@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_115428) do
+ActiveRecord::Schema.define(version: 2021_03_24_143924) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2021_02_25_115428) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["profile_id"], name: "index_huntings_on_profile_id"
     t.index ["recruitment_id"], name: "index_huntings_on_recruitment_id"
+  end
+
+  create_table "matings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "hunting_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hunting_id"], name: "index_matings_on_hunting_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_115428) do
   add_foreign_key "companies", "users"
   add_foreign_key "huntings", "profiles"
   add_foreign_key "huntings", "recruitments"
+  add_foreign_key "matings", "huntings"
   add_foreign_key "profiles", "users"
   add_foreign_key "recruitments", "companies"
 end
